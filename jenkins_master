@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         
         stage('Welcome to master'){
@@ -12,11 +11,10 @@ pipeline {
         stage('Tigger the Slave Jobs') {
             steps {
                 script {
-                def filePath = readFile(file: 'text.txt')
-                def line = data.readLines()
-                echo line;
-                echo 'Start Trigger to send name and age to slave'
-                build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: line.get(0)), string(name: 'Ages', value: line.get(1))]
+                    def data = readFile(file: 'text.txt')
+                    def dataline = data.readLines()
+                    echo 'Start Trigger to send name and age to slave'
+                    build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: dataline.get(0)), string(name: 'Ages', value: dataline.get(1))]
                 }
             }
         }
