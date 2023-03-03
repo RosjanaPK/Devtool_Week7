@@ -2,18 +2,13 @@ pipeline {
     agent any
     parameters {
         string(name: 'NAME', defaultValue: 'Tuchsanai', description: 'Enter your name')
-        string(name: 'Ages', defaultValue: '20', description: 'Enter your Ages')
+        string(name: 'Ages', defaultValue: '20', description: 'Enter your ages')
     }
     stages {
-        stage('version') {
-        steps {
-                sh 'python --version'
-            }
-        }
         stage('Example') {
-            
             steps {
-                echo "python myscript.py ${params.NAME} --age ${params.Ages}"                
+                echo "Hello from Slave ${params.NAME} of ${params.Ages}"
+                
             }
         }
     }
