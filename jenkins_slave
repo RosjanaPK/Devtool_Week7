@@ -5,7 +5,13 @@ pipeline {
         string(name: 'Ages', defaultValue: '20', description: 'Enter your Ages')
     }
     stages {
+        stage('version') {
+        steps {
+                sh 'python --version'
+            }
+        }
         stage('Example') {
+            
             steps {
                 sh "python myscript.py ${params.NAME} --age ${params.Ages}"                
             }
