@@ -6,7 +6,7 @@ parser.add_argument("--age", help="the age of the person being greeted", type=in
 args = parser.parse_args()
 
 greeting = "Hello, " + args.name + "!"
-if (args.age):
+if (args.age) :
     greeting += " You are " + str(args.age) + " years old."
 
 print(greeting)
